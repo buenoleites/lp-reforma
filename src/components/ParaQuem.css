@@ -1,0 +1,193 @@
+/* ============================================================
+   Seção "Quem está sendo cobrado por respostas..."
+   Banda escura (foto + overlay) com headline + texto de apoio,
+   carrossel de perguntas (2 por vez), fechamento e CTA.
+   ============================================================ */
+
+.para-quem {
+  background: var(--color-bg);
+}
+
+/* ---------- Banda escura (cartão com foto) ---------- */
+.pq-band {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 360px;
+  padding: 60px 32px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  color: #fff;
+}
+
+.pq-band__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* A foto fica por cima; se faltar, o gradiente escuro abaixo é o fallback. */
+  background:
+    url("/para-quem-bg.jpg") center / cover no-repeat,
+    radial-gradient(120% 130% at 28% 12%, #243042 0%, #161d28 48%, #0c0f15 100%);
+}
+
+.pq-band__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.58);
+}
+
+.pq-band__content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  text-align: center;
+}
+
+.pq-band__title {
+  font-size: 40px;
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.pq-band__text {
+  margin: 16px auto 0;
+  max-width: 680px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-white-soft);
+  text-wrap: pretty;
+}
+
+/* ---------- Cards com imagem + copy sobreposta ---------- */
+.pq-cards {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.pq-card {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 428px;
+  border-radius: 30px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.pq-card__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pq-card__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.45) 52%,
+    rgba(0, 0, 0, 0.82) 100%
+  );
+}
+
+.pq-card__content {
+  position: relative;
+  z-index: 2;
+  padding: 36px 34px;
+}
+
+.pq-card__title {
+  font-size: 26px;
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.pq-card__list {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pq-card__list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 15px;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.9);
+}
+.pq-card__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--cta-from), var(--cta-to));
+}
+
+/* ---------- Fechamento + CTA ---------- */
+.pq-closing {
+  max-width: 760px;
+  margin: 40px auto 0;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--color-muted);
+}
+.pq-closing strong {
+  display: block;
+  font-weight: 800;
+  color: var(--color-ink);
+}
+
+.pq-cta {
+  margin-top: 28px;
+  text-align: center;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 800px) {
+  .pq-band {
+    min-height: 0;
+    padding: 44px 22px;
+    border-radius: 20px;
+  }
+  .pq-band__title {
+    font-size: 27px;
+  }
+  .pq-band__text {
+    font-size: 15px;
+  }
+  .pq-closing {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 520px) {
+  .pq-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .pq-card {
+    min-height: 340px;
+    border-radius: 26px;
+  }
+  .pq-card__content {
+    padding: 28px 26px;
+  }
+  .pq-card__title {
+    font-size: 23px;
+  }
+}

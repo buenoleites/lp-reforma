@@ -1,0 +1,94 @@
+/* ============================================================
+   Seção "Presença construída na gestão pública"
+   Título + texto (alinhados à esquerda) e grade 3x2 de municípios:
+   foto do prédio + overlay escuro + logo branca centralizada.
+   ============================================================ */
+
+.resultados {
+  background: var(--color-bg);
+}
+
+.resultados__heading {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 44px;
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--color-ink);
+}
+
+.resultados__text {
+  max-width: 660px;
+  margin: 18px auto 0;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-muted);
+  text-wrap: pretty;
+}
+
+.resultados__grid {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ---------- Cartão de município ---------- */
+.muni {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 10 / 9;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: #11161f;
+}
+
+.muni__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.muni__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 17, 28, 0.5) 0%,
+    rgba(12, 17, 28, 0.68) 100%
+  );
+}
+
+.muni__logo {
+  position: relative;
+  z-index: 2;
+  width: 62%;
+  height: 66%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 800px) {
+  .resultados__heading {
+    font-size: 29px;
+  }
+  .resultados__text {
+    font-size: 16px;
+  }
+  .resultados__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+}

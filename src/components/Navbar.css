@@ -1,0 +1,174 @@
+/* ============================================================
+   Navbar — header sobreposto ao hero (rola junto com a página).
+   Desktop: logo à esquerda, pílula glass centralizada, CTA à direita.
+   Mobile: logo à esquerda, botão hambúrguer com dropdown glass.
+   ============================================================ */
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+
+.navbar__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 34px;
+}
+
+/* ---------- Logo ---------- */
+.logo {
+  display: inline-flex;
+  align-items: center;
+}
+.logo__img {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+/* ---------- Pílula central (glassmorphism) ---------- */
+.navbar__pill {
+  position: absolute;
+  left: 50%;
+  top: 34px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  height: 40px;
+  padding: 0 24px;
+  background: rgba(70, 70, 65, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 10px 28px rgba(0, 0, 0, 0.18);
+}
+.navbar__pill a {
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  opacity: 0.9;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+.navbar__pill a:hover {
+  opacity: 1;
+}
+
+.navbar__cta {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- Mobile (escondido no desktop) ---------- */
+.navbar__toggle,
+.navbar__drop {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .navbar__inner {
+    padding-top: 16px;
+  }
+
+  .logo__img {
+    height: 26px;
+  }
+
+  .navbar__pill,
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__toggle {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    background: rgba(35, 36, 32, 0.72);
+    backdrop-filter: blur(20px) saturate(130%);
+    -webkit-backdrop-filter: blur(20px) saturate(130%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 10px 28px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+  }
+  .navbar__toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.88);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .navbar.is-open .navbar__toggle span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .navbar.is-open .navbar__toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .navbar.is-open .navbar__toggle span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .navbar__drop {
+    display: flex;
+    position: absolute;
+    top: 78px;
+    right: var(--container-pad);
+    width: 230px;
+    flex-direction: column;
+    gap: 14px;
+    padding: 18px;
+    background: rgba(35, 36, 32, 0.86);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 22px;
+    backdrop-filter: blur(20px) saturate(130%);
+    -webkit-backdrop-filter: blur(20px) saturate(130%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 14px 32px rgba(0, 0, 0, 0.22);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+  }
+  .navbar__drop.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .navbar__drop a {
+    color: #fff;
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 14px;
+    padding: 4px 2px;
+  }
+  .navbar__drop-cta {
+    margin-top: 4px;
+    text-align: center;
+    padding: 12px 14px !important;
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--cta-from), var(--cta-to));
+    color: var(--cta-ink) !important;
+    font-weight: 700 !important;
+  }
+}

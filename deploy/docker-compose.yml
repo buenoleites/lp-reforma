@@ -1,0 +1,38 @@
+# Landing page "Reforma Tributária" servida como contêiner estático atrás do
+# Traefik que já roda na VPS (mesmo padrão do /opt/n8n).
+#
+# - Serve os arquivos de ./site (a pasta dist/ buildada)
+# - Entra na rede externa n8n_default para o Traefik conseguir alcançá-lo
+# - As labels copiam o roteamento do n8n: HTTPS via certresolver "le"
+#
+# Para trocar o domínio, altere APENAS as ocorrências de
+# reforma.unyflex.com.br abaixo.
+
+services:
+  reforma:
+    image: nginx:alpine
+    container_name: reforma
+    restart: unless-stopped
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - n8n_default
+    labels:
+      - "traefik.enable=true"
+      # Site em HTTPS (entrada websecure) + certificado automático "le"
+      - "traefik.http.routers.reforma.entrypoints=websecure"
+      - "traefik.http.routers.reforma.rule=Host(`vps64185.publiccloud.com.br`)"
+      - "traefik.http.routers.reforma.tls=true"
+      - "traefik.http.routers.reforma.tls.certresolver=le"
+      - "traefik.http.services.reforma.loadbalancer.server.port=80"
+      # Redireciona http:// -> https://
+      - "traefik.http.routers.reforma-web.entrypoints=web"
+      - "traefik.http.routers.reforma-web.rule=Host(`vps64185.publiccloud.com.br`)"
+      - "traefik.http.routers.reforma-web.middlewares=reforma-redirect"
+      - "traefik.http.middlewares.reforma-redirect.redirectscheme.scheme=https"
+
+# Rede já criada pelo stack do n8n/Traefik — apenas reutilizamos.
+networks:
+  n8n_default:
+    external: true

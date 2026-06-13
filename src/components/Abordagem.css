@@ -1,0 +1,81 @@
+/* ============================================================
+   Seção "A Reforma Tributária exige mais do que entendimento..."
+   Banda escura (foto + overlay) com headline + subheadline e,
+   abaixo, o carrossel com os 4 cards de abordagem.
+   ============================================================ */
+
+.abordagem {
+  background: var(--color-bg);
+}
+
+/* ---------- Banda escura (cartão com foto) ---------- */
+.abordagem-band {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: 64px 32px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  color: #fff;
+}
+
+.abordagem-band__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* A foto fica por cima; se faltar, o gradiente escuro abaixo é o fallback. */
+  background:
+    url("/abordagem-bg.jpg") center / cover no-repeat,
+    radial-gradient(130% 120% at 72% 18%, #26303f 0%, #161b24 48%, #0b0e13 100%);
+}
+
+.abordagem-band__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.58);
+}
+
+.abordagem-band__content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  text-align: center;
+}
+
+.abordagem-band__title {
+  font-size: 42px;
+  line-height: 1.06;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.abordagem-band__text {
+  margin: 18px auto 0;
+  max-width: 600px;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--color-white-soft);
+}
+
+/* ---------- Carrossel ---------- */
+.abordagem-carousel {
+  margin-top: 36px;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 800px) {
+  .abordagem-band {
+    min-height: 0;
+    padding: 46px 22px;
+    border-radius: 20px;
+  }
+  .abordagem-band__title {
+    font-size: 28px;
+  }
+  .abordagem-band__text {
+    font-size: 15px;
+  }
+}
