@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useReveal } from "../lib/useReveal";
 import { submitLead, redirectToThankYou } from "../lib/lead";
+import { asset } from "../lib/asset";
 import "./CtaFinal.css";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -140,7 +141,11 @@ export default function CtaFinal() {
       ref={ref}
       className={`cta-final${visible ? " is-visible" : ""}`}
     >
-      <div className="cta-final__media" aria-hidden="true" />
+      <div
+        className="cta-final__media"
+        style={{ "--media-bg": `url(${asset("cta-final-bg.jpg")})` }}
+        aria-hidden="true"
+      />
       <div className="cta-final__overlay" aria-hidden="true" />
 
       <div className="container cta-final__inner">

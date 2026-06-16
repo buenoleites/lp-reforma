@@ -1,5 +1,6 @@
 import { useReveal } from "../lib/useReveal";
 import { handleAnchorClick } from "../lib/scroll";
+import { asset } from "../lib/asset";
 import "./OCurso.css";
 
 const ITEMS = [
@@ -70,7 +71,7 @@ export default function OCurso() {
           <div className="o-curso__media" data-reveal style={{ "--reveal-i": 1 }}>
             <img
               className="o-curso__img"
-              src="/o-curso.jpg"
+              src={asset("o-curso.jpg")}
               alt="Servidor analisando documentos e indicadores financeiros em sua mesa de trabalho"
               loading="lazy"
             />

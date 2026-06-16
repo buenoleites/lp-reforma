@@ -1,4 +1,5 @@
 import { useReveal } from "../lib/useReveal";
+import { asset } from "../lib/asset";
 import "./Presencial.css";
 
 const ITEMS = [
@@ -22,7 +23,7 @@ export default function Presencial() {
           <div className="presencial__media" data-reveal style={{ "--reveal-i": 0 }}>
             <img
               className="presencial__img"
-              src="/presencial.jpg"
+              src={asset("presencial.jpg")}
               alt="Participantes durante a capacitação presencial, atentos à aula"
               loading="lazy"
             />

@@ -27,7 +27,7 @@
   z-index: 0;
   /* A foto fica por cima; se faltar, o gradiente escuro abaixo é o fallback. */
   background:
-    url("/para-quem-bg.jpg") center / cover no-repeat,
+    var(--media-bg, none) center / cover no-repeat,
     radial-gradient(120% 130% at 28% 12%, #243042 0%, #161d28 48%, #0c0f15 100%);
 }
 

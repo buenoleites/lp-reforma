@@ -1,0 +1,6 @@
+# Mantém o contexto de build enxuto e evita copiar artefatos locais:
+# o `npm ci` reinstala tudo e o `npm run build` regenera o dist dentro da imagem.
+node_modules
+dist
+.git
+.DS_Store

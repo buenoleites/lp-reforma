@@ -1,4 +1,5 @@
 import { handleAnchorClick } from "../lib/scroll";
+import { asset } from "../lib/asset";
 import "./Hero.css";
 
 export default function Hero() {
@@ -7,7 +8,11 @@ export default function Hero() {
       {/* FOTO (entra depois): servidor ou equipe da área fazendária em reunião,
           analisando números, relatórios ou arrecadação municipal.
           Basta definir background-image em .hero__media. */}
-      <div className="hero__media" aria-hidden="true" />
+      <div
+        className="hero__media"
+        style={{ "--media-bg": `url(${asset("hero-bg.jpg")})` }}
+        aria-hidden="true"
+      />
       <div className="hero__overlay" aria-hidden="true" />
 
       <div className="container hero__inner">

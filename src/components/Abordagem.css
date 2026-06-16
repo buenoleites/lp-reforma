@@ -27,7 +27,7 @@
   z-index: 0;
   /* A foto fica por cima; se faltar, o gradiente escuro abaixo é o fallback. */
   background:
-    url("/abordagem-bg.jpg") center / cover no-repeat,
+    var(--media-bg, none) center / cover no-repeat,
     radial-gradient(130% 120% at 72% 18%, #26303f 0%, #161b24 48%, #0b0e13 100%);
 }
 

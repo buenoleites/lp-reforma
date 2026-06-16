@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { handleAnchorClick } from "../lib/scroll";
+import { asset } from "../lib/asset";
 import "./Navbar.css";
 
 const LINKS = [
@@ -39,7 +40,7 @@ export default function Navbar() {
           onClick={onLinkClick}
           aria-label="Unyflex — início"
         >
-          <img className="logo__img" src="/logo-unyflex.png" alt="Unyflex" />
+          <img className="logo__img" src={asset("logo-unyflex.png")} alt="Unyflex" />
         </a>
 
         <nav className="navbar__pill" aria-label="Navegação principal">

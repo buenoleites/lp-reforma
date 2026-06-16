@@ -1,5 +1,6 @@
 import Carousel from "./Carousel";
 import { useReveal } from "../lib/useReveal";
+import { asset } from "../lib/asset";
 import "./Abordagem.css";
 
 const CARDS = [
@@ -35,7 +36,11 @@ export default function Abordagem() {
             servidores em treinamento. Defina background-image em
             .abordagem-band__media. */}
         <div className="abordagem-band" data-reveal style={{ "--reveal-i": 0 }}>
-          <div className="abordagem-band__media" aria-hidden="true" />
+          <div
+            className="abordagem-band__media"
+            style={{ "--media-bg": `url(${asset("abordagem-bg.jpg")})` }}
+            aria-hidden="true"
+          />
           <div className="abordagem-band__overlay" aria-hidden="true" />
           <div className="abordagem-band__content">
             <h2 className="abordagem-band__title">

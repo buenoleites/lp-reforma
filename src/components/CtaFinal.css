@@ -19,7 +19,7 @@
   z-index: 0;
   /* A foto fica por cima; se faltar, o gradiente escuro abaixo é o fallback. */
   background:
-    url("/cta-final-bg.jpg") center / cover no-repeat,
+    var(--media-bg, none) center / cover no-repeat,
     radial-gradient(120% 120% at 50% 0%, #20283a 0%, #12161e 50%, #0a0c11 100%);
 }
 

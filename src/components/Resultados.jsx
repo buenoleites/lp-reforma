@@ -1,4 +1,5 @@
 import { useReveal } from "../lib/useReveal";
+import { asset } from "../lib/asset";
 import "./Resultados.css";
 
 // Municípios/órgãos atendidos — fotos do prédio + logo branca por cartão.
@@ -42,13 +43,13 @@ export default function Resultados() {
             >
               <div
                 className="muni__media"
-                style={{ backgroundImage: `url("/muni/${m.slug}-bg.jpg")` }}
+                style={{ backgroundImage: `url("${asset(`muni/${m.slug}-bg.jpg`)}")` }}
                 aria-hidden="true"
               />
               <div className="muni__overlay" aria-hidden="true" />
               <div
                 className="muni__logo"
-                style={{ backgroundImage: `url("/muni/${m.slug}-logo.png")` }}
+                style={{ backgroundImage: `url("${asset(`muni/${m.slug}-logo.png`)}")` }}
                 role="img"
                 aria-label={m.nome}
               />

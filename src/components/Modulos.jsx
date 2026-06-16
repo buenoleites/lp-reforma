@@ -1,5 +1,6 @@
 import { useReveal } from "../lib/useReveal";
 import { handleAnchorClick } from "../lib/scroll";
+import { asset } from "../lib/asset";
 import "./Modulos.css";
 
 const MODULOS = [
@@ -71,7 +72,7 @@ export default function Modulos() {
         >
           <img
             className="modulos__img"
-            src="/modulos.jpg"
+            src={asset("modulos.jpg")}
             alt="Instrutor conduzindo a capacitação presencial sobre a Reforma Tributária"
             loading="lazy"
           />

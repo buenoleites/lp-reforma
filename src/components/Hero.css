@@ -19,7 +19,7 @@
   z-index: 0;
   /* A foto fica por cima; se faltar, o gradiente escuro abaixo é o fallback. */
   background:
-    url("/hero-bg.jpg") center / cover no-repeat,
+    var(--media-bg, none) center / cover no-repeat,
     radial-gradient(120% 95% at 74% 12%, #2a3340 0%, #171b22 46%, #0b0d11 100%);
 }
 

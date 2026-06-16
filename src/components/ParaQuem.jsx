@@ -1,5 +1,6 @@
 import { useReveal } from "../lib/useReveal";
 import { handleAnchorClick } from "../lib/scroll";
+import { asset } from "../lib/asset";
 import "./ParaQuem.css";
 
 const CARDS = [
@@ -37,7 +38,11 @@ export default function ParaQuem() {
             indicadores ou discussão de planejamento. Defina background-image
             em .pq-band__media. */}
         <div className="pq-band" data-reveal style={{ "--reveal-i": 0 }}>
-          <div className="pq-band__media" aria-hidden="true" />
+          <div
+            className="pq-band__media"
+            style={{ "--media-bg": `url(${asset("para-quem-bg.jpg")})` }}
+            aria-hidden="true"
+          />
           <div className="pq-band__overlay" aria-hidden="true" />
           <div className="pq-band__content">
             <h2 className="pq-band__title">
@@ -63,7 +68,7 @@ export default function ParaQuem() {
             >
               <div
                 className="pq-card__media"
-                style={{ backgroundImage: `url("${card.img}")` }}
+                style={{ backgroundImage: `url("${asset(card.img)}")` }}
                 aria-hidden="true"
               />
               <div className="pq-card__overlay" aria-hidden="true" />
