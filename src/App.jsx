@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { trackEvent } from "./lib/meta";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import ParaQuem from "./components/ParaQuem";
@@ -10,6 +12,10 @@ import Faq from "./components/Faq";
 import CtaFinal from "./components/CtaFinal";
 
 export default function App() {
+  useEffect(() => {
+    trackEvent('PageView');
+  }, []);
+
   return (
     <>
       <Navbar />
