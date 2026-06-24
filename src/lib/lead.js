@@ -53,7 +53,7 @@ export async function submitLead(form) {
     WhatsApp: form.whatsapp,
     Cargo_Setor: form.cargo,
     Orgao_Municipio: form.orgao,
-    Orgao_Publico: "",
+    Orgao_Publico: form.servidorPublico,
     Referral_Source: document.referrer || "",
     Dispositivo: getDevice(),
     URL: window.location.href,

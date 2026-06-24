@@ -27,6 +27,8 @@ function validateField(field, value) {
         : "Informe um celular válido com DDD.";
     case "orgao":
       return value.trim() ? "" : "Informe o órgão ou município.";
+    case "servidorPublico":
+      return value ? "" : "Selecione uma opção.";
     default:
       return "";
   }
@@ -94,6 +96,7 @@ export default function CtaFinal() {
     whatsapp: "",
     cargo: "",
     orgao: "",
+    servidorPublico: "",
   });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
@@ -117,7 +120,7 @@ export default function CtaFinal() {
   async function handleSubmit(e) {
     e.preventDefault();
     const next = {};
-    ["nome", "email", "whatsapp", "orgao"].forEach((f) => {
+    ["nome", "email", "whatsapp", "orgao", "servidorPublico"].forEach((f) => {
       const err = validateField(f, form[f]);
       if (err) next[f] = err;
     });
@@ -215,6 +218,31 @@ export default function CtaFinal() {
                   onBlur={handleBlur("orgao")}
                   error={errors.orgao}
                 />
+
+                <div className={`lp-form__field lp-form__field--full${errors.servidorPublico ? " is-error" : ""}`}>
+                  <span className="lp-form__toggle-label">
+                    É servidor público? <span className="req" aria-hidden="true"> *</span>
+                  </span>
+                  <div className="lp-form__toggle-group" role="group" aria-label="É servidor público?">
+                    {["Sim", "Não"].map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        className={`lp-form__toggle-btn${form.servidorPublico === opt ? " is-active" : ""}`}
+                        onClick={() => {
+                          setForm((f) => ({ ...f, servidorPublico: opt }));
+                          setErrors((prev) => ({ ...prev, servidorPublico: undefined }));
+                        }}
+                        aria-pressed={form.servidorPublico === opt}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                  {errors.servidorPublico ? (
+                    <span className="lp-form__err">{errors.servidorPublico}</span>
+                  ) : null}
+                </div>
               </div>
 
               <button

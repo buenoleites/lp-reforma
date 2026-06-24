@@ -138,6 +138,47 @@
   color: #ffb3b3;
 }
 
+.lp-form__toggle-label {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.lp-form__toggle-group {
+  display: flex;
+  gap: 12px;
+}
+
+.lp-form__toggle-btn {
+  flex: 1;
+  height: 44px;
+  font-family: var(--font-head);
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.lp-form__toggle-btn:hover {
+  border-color: rgba(255, 255, 255, 0.85);
+  color: #fff;
+}
+
+.lp-form__toggle-btn.is-active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+
+.lp-form__field.is-error .lp-form__toggle-btn:not(.is-active) {
+  border-color: #ff7a7a;
+}
+
 .lp-form__submit {
   width: 100%;
   margin-top: 22px;
